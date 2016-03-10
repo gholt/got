@@ -10,7 +10,7 @@ import (
 
 func main() {
 	if len(os.Args) < 3 {
-		fmt.Fprintf(os.Stderr, "Syntax: %s <infile> <outfile> [key[=value]] ...\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Syntax: %s <infile> <outfile> [key[=value]] [key,item1[,item2]...] ...\n", os.Args[0])
 		os.Exit(1)
 	}
 	inName := os.Args[1]
@@ -39,11 +39,14 @@ func main() {
 		os.Exit(1)
 	}
 	defer out.Close()
-	m := make(map[string]string)
+	m := make(map[string]interface{})
 	for _, a := range args {
 		if strings.Contains(a, "=") {
 			b := strings.SplitN(a, "=", 2)
 			m[b[0]] = b[1]
+		} else if strings.Contains(a, ",") {
+			b := strings.Split(a, ",")
+			m[b[0]] = b[1:]
 		} else {
 			m[a] = "true"
 		}
