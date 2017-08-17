@@ -18,7 +18,7 @@ func main() {
 	args := os.Args[3:]
 	var err error
 	var in *os.File
-	if in, err = os.Open(os.Args[1]); err != nil {
+	if in, err = os.Open(inName); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %#v %s\n", inName, err)
 		os.Exit(1)
 	}
@@ -34,7 +34,7 @@ func main() {
 		os.Exit(1)
 	}
 	var out *os.File
-	if out, err = os.Create(os.Args[2]); err != nil {
+	if out, err = os.Create(outName); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %#v %s\n", outName, err)
 		os.Exit(1)
 	}
