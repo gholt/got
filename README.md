@@ -8,12 +8,16 @@ source code files from one template. It isn't the greatest solution to the "No
 Generics" problem of Go, but it's pretty simple and straightforward and has
 served me well enough for years now.
 
-I do like approaches others have taken to solve this problem -- especially
+~I do like approaches others have taken to solve this problem -- especially
 options like https://github.com/cheekybits/genny -- but I feel like _someday_
 Go will have its own solution for the issue and until then, templates are fine
-for me.
+for me.~
 
-Since it's just simple text template parsing, you could use GoT for other
+**Turns out the genny idea was pestering my mind. I like the approach, but wanted
+something even simpler. So I wrote https://github.com/gholt/gastly and am using
+that now.**
+
+Since "got" is just simple text template parsing, you could use it for other
 things too, though I've really just used it for source code. One example where
 I've used it is https://github.com/gholt/holdme and it's just called from
 within the package.go file when you use "go generate".
